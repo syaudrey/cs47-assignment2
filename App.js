@@ -1,7 +1,11 @@
 import AppLoading from 'expo-app-loading';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, Platform, SafeAreaView, ImageBackground } from 'react-native';
 import { useFonts } from 'expo-font';
-import { Themes } from './assets/Themes';
+import { Profiles, Icons, Themes } from './assets/Themes';
+
+import Navigation from './Navigation';
+import Profile from './Profile';
+import Bottom from './Bottom';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,31 +17,26 @@ export default function App() {
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
 
-  /* insert your code here */
 
   return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          fontFamily: 'Sydney', // test to see if the font is loaded, feel free to remove this
-        }}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text
-        style={{
-          fontFamily: 'Sydney-Bold', // test to see if the font is loaded, feel free to remove this
-        }}>
-        ~Good luck~
-      </Text>
-    </View>
+
+  	<View style={styles.container}>
+
+  		<Navigation />
+  		<Profile />
+  		<Bottom />
+
+  	</View>
+    
   );
 }
 
 const styles = StyleSheet.create({
+
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  	flex: 1,
+  	backgroundColor: Themes.light.bg,
+  	paddingTop: 40,	// Extra padding for status bar; did not use SafeAreaView since it also creates padding from bottom edge
   },
+
 });
